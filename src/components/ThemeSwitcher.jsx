@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const themes = [
   { id: "v1", label: "V1", name: "Tech Dark" },
@@ -16,23 +17,56 @@ const themes = [
 ];
 
 export default function ThemeSwitcher({ currentTheme, onChangeTheme }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const activeTheme = themes.find((t) => t.id === currentTheme);
+
   return (
-    <div className="theme-switcher" role="group" aria-label="Choose portfolio theme">
-      <span className="theme-switcher-label">Style</span>
-      {themes.map((t) => (
-        <motion.button
-          key={t.id}
-          className={`theme-btn ${currentTheme === t.id ? "theme-btn--active" : ""}`}
-          onClick={() => onChangeTheme(t.id)}
-          whileHover={{ scale: 1.04 }}
-          whileTap={{ scale: 0.96 }}
-          aria-pressed={currentTheme === t.id}
-          title={t.name}
-        >
-          <span className="theme-btn-label">{t.label}</span>
-          <span className="theme-btn-name">{t.name}</span>
-        </motion.button>
-      ))}
+    <div className="theme-switcher-container">
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            className="theme-switcher-menu"
+            initial={{ opacity: 0, y: 20, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 20, scale: 0.95 }}
+            transition={{ duration: 0.2 }}
+          >
+            <div className="theme-switcher-header">
+              <span>Select Theme</span>
+              <button className="theme-switcher-close" onClick={() => setIsOpen(false)}>
+                ✕
+              </button>
+            </div>
+            <div className="theme-switcher-list">
+              {themes.map((t) => (
+                <button
+                  key={t.id}
+                  className={`theme-list-btn ${currentTheme === t.id ? "theme-list-btn--active" : ""}`}
+                  onClick={() => {
+                    onChangeTheme(t.id);
+                    setIsOpen(false);
+                  }}
+                  aria-pressed={currentTheme === t.id}
+                >
+                  <span className="theme-list-label">{t.label}</span>
+                  <span className="theme-list-name">{t.name}</span>
+                </button>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <motion.button
+        className="theme-switcher-fab"
+        onClick={() => setIsOpen(!isOpen)}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        aria-label="Toggle theme menu"
+      >
+        <span className="fab-icon">🎨</span>
+        <span className="fab-text desktop-only">{activeTheme?.name}</span>
+      </motion.button>
     </div>
   );
 }
