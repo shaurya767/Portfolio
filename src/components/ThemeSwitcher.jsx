@@ -9,6 +9,10 @@ const themes = [
   { id: "v6", label: "V6", name: "Monochrome" },
   { id: "v7", label: "V7", name: "Glass/Frost" },
   { id: "v8", label: "V8", name: "E-Ink" },
+  { id: "v9", label: "V9", name: "Cyberpunk" },
+  { id: "v10", label: "V10", name: "Dracula" },
+  { id: "v11", label: "V11", name: "Solarized" },
+  { id: "v12", label: "V12", name: "Gruvbox" },
 ];
 
 export default function ThemeSwitcher({ currentTheme, onChangeTheme }) {
