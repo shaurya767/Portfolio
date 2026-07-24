@@ -5,6 +5,10 @@ const themes = [
   { id: "v2", label: "V2", name: "Editorial" },
   { id: "v3", label: "V3", name: "Brutalist" },
   { id: "v4", label: "V4", name: "Terminal" },
+  { id: "v5", label: "V5", name: "Synthwave" },
+  { id: "v6", label: "V6", name: "Monochrome" },
+  { id: "v7", label: "V7", name: "Glass/Frost" },
+  { id: "v8", label: "V8", name: "E-Ink" },
 ];
 
 export default function ThemeSwitcher({ currentTheme, onChangeTheme }) {

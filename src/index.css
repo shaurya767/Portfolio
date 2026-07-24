@@ -143,6 +143,130 @@ ul { list-style: none; }
   --transition:     0.2s ease;
 }
 
+/* ══════════════════════════════════════════════════
+   THEME V5 — SYNTHWAVE (Neon 80s, pinks, purples)
+   Outrun aesthetic, bright gradients
+   ══════════════════════════════════════════════════ */
+.theme-v5 {
+  --bg:             #0f0518;
+  --bg-2:           #1a0b2e;
+  --bg-3:           #261245;
+  --surface:        rgba(255,0,255,0.05);
+  --surface-hover:  rgba(255,0,255,0.1);
+  --border:         rgba(0,255,255,0.3);
+  --border-hover:   rgba(0,255,255,0.6);
+  --text-primary:   #00ffff;
+  --text-secondary: #ff00ff;
+  --text-muted:     #880088;
+  --accent:         #ff00ff;
+  --accent-rgb:     255,0,255;
+  --accent-2:       #00ffff;
+  --gradient:       linear-gradient(135deg,#ff00ff,#00ffff);
+  --gradient-subtle:rgba(255,0,255,0.1);
+  --font:           'Inter', sans-serif;
+  --font-heading:   'Inter', sans-serif;
+  --font-mono:      'JetBrains Mono', monospace;
+  --radius:         4px;
+  --radius-lg:      8px;
+  --shadow:         0 0 15px rgba(255,0,255,0.2);
+  --card-border:    1px solid var(--border);
+  --nav-h:          70px;
+  --transition:     0.25s ease;
+}
+
+/* ══════════════════════════════════════════════════
+   THEME V6 — MONOCHROME (Swiss design, minimal)
+   Black and white only, heavy typography
+   ══════════════════════════════════════════════════ */
+.theme-v6 {
+  --bg:             #ffffff;
+  --bg-2:           #f5f5f5;
+  --bg-3:           #ebebeb;
+  --surface:        #ffffff;
+  --surface-hover:  #fafafa;
+  --border:         #000000;
+  --border-hover:   #000000;
+  --text-primary:   #000000;
+  --text-secondary: #404040;
+  --text-muted:     #808080;
+  --accent:         #000000;
+  --accent-rgb:     0,0,0;
+  --accent-2:       #000000;
+  --gradient:       linear-gradient(135deg,#000000,#404040);
+  --gradient-subtle:rgba(0,0,0,0.05);
+  --font:           'Inter', sans-serif;
+  --font-heading:   'Inter', sans-serif;
+  --font-mono:      'JetBrains Mono', monospace;
+  --radius:         0px;
+  --radius-lg:      0px;
+  --shadow:         none;
+  --card-border:    1px solid var(--border);
+  --nav-h:          70px;
+  --transition:     0.2s ease;
+}
+
+/* ══════════════════════════════════════════════════
+   THEME V7 — GLASS/FROST (Soft, blurred, translucent)
+   Pastel gradients, heavy blur
+   ══════════════════════════════════════════════════ */
+.theme-v7 {
+  --bg:             #f8f9fa;
+  --bg-2:           #f1f3f5;
+  --bg-3:           #e9ecef;
+  --surface:        rgba(255,255,255,0.5);
+  --surface-hover:  rgba(255,255,255,0.7);
+  --border:         rgba(255,255,255,0.5);
+  --border-hover:   rgba(255,255,255,0.9);
+  --text-primary:   #212529;
+  --text-secondary: #495057;
+  --text-muted:     #868e96;
+  --accent:         #339af0;
+  --accent-rgb:     51,154,240;
+  --accent-2:       #b197fc;
+  --gradient:       linear-gradient(135deg,#339af0,#b197fc);
+  --gradient-subtle:rgba(51,154,240,0.1);
+  --font:           'Plus Jakarta Sans', sans-serif;
+  --font-heading:   'Plus Jakarta Sans', sans-serif;
+  --font-mono:      'JetBrains Mono', monospace;
+  --radius:         24px;
+  --radius-lg:      32px;
+  --shadow:         0 8px 32px rgba(0,0,0,0.04);
+  --card-border:    1px solid var(--border);
+  --nav-h:          70px;
+  --transition:     0.4s cubic-bezier(0.4,0,0.2,1);
+}
+
+/* ══════════════════════════════════════════════════
+   THEME V8 — E-INK (Warm paper, brown ink)
+   E-reader aesthetic
+   ══════════════════════════════════════════════════ */
+.theme-v8 {
+  --bg:             #f2ece4;
+  --bg-2:           #e9e1d5;
+  --bg-3:           #dfd4c6;
+  --surface:        #fdfbfa;
+  --surface-hover:  #ffffff;
+  --border:         #c9bfae;
+  --border-hover:   #a89f90;
+  --text-primary:   #3a352f;
+  --text-secondary: #5e564d;
+  --text-muted:     #8a8174;
+  --accent:         #a13b29;
+  --accent-rgb:     161,59,41;
+  --accent-2:       #823021;
+  --gradient:       linear-gradient(135deg,#a13b29,#823021);
+  --gradient-subtle:rgba(161,59,41,0.08);
+  --font:           'Lora', Georgia, serif;
+  --font-heading:   'Lora', Georgia, serif;
+  --font-mono:      'JetBrains Mono', monospace;
+  --radius:         2px;
+  --radius-lg:      4px;
+  --shadow:         0 1px 3px rgba(0,0,0,0.05);
+  --card-border:    1px solid var(--border);
+  --nav-h:          70px;
+  --transition:     0.25s ease;
+}
+
 /* ─── Base layout (theme-root applies bg + font) ─── */
 .theme-root {
   background: var(--bg);
