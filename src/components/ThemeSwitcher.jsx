@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const themes = [
@@ -18,24 +18,42 @@ const themes = [
 
 export default function ThemeSwitcher({ currentTheme, onChangeTheme }) {
   const [isOpen, setIsOpen] = useState(false);
+  const closeTimerRef = useRef(null);
   const activeTheme = themes.find((t) => t.id === currentTheme);
 
+  const handleMouseEnter = useCallback(() => {
+    // Cancel any pending close
+    if (closeTimerRef.current) clearTimeout(closeTimerRef.current);
+    setIsOpen(true);
+  }, []);
+
+  const handleMouseLeave = useCallback(() => {
+    // Small delay so moving into the menu doesn't close it instantly
+    closeTimerRef.current = setTimeout(() => setIsOpen(false), 150);
+  }, []);
+
+  // Click still works for mobile (tap)
+  const handleFabClick = useCallback(() => {
+    setIsOpen((prev) => !prev);
+  }, []);
+
   return (
-    <div className="theme-switcher-container">
+    <div
+      className="theme-switcher-container"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       <AnimatePresence>
         {isOpen && (
           <motion.div
             className="theme-switcher-menu"
-            initial={{ opacity: 0, y: 20, scale: 0.95 }}
+            initial={{ opacity: 0, y: 12, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            transition={{ duration: 0.2 }}
+            exit={{ opacity: 0, y: 12, scale: 0.96 }}
+            transition={{ duration: 0.18, ease: "easeOut" }}
           >
             <div className="theme-switcher-header">
               <span>Select Theme</span>
-              <button className="theme-switcher-close" onClick={() => setIsOpen(false)}>
-                ✕
-              </button>
             </div>
             <div className="theme-switcher-list">
               {themes.map((t) => (
@@ -59,10 +77,11 @@ export default function ThemeSwitcher({ currentTheme, onChangeTheme }) {
 
       <motion.button
         className="theme-switcher-fab"
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={handleFabClick}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         aria-label="Toggle theme menu"
+        aria-expanded={isOpen}
       >
         <span className="fab-icon">🎨</span>
         <span className="fab-text desktop-only">{activeTheme?.name}</span>
